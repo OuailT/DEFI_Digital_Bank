@@ -2,7 +2,11 @@ const TokenFarm = artifacts.require("TokenFarm");
 const EuroToken = artifacts.require("EuroToken");
 const DaiToken= artifacts.require("DaiToken");
 
-module.exports = async function(deployer) {
+
+// deployer =>  put the smart contract on the network
+// network itself
+// accounts => all the accounts from ganache
+module.exports = async function(deployer, network, accounts){
   
   //Deploy EuroToken
   await deployer.deploy(EuroToken);
@@ -19,10 +23,8 @@ module.exports = async function(deployer) {
   //Transfer all the EuroToken to FarmToken to give it back to an investor
   await euroToken.transfer(farmToken.address, "1000000000000000000000000");
 
-  // Transfer some euroToken to the investor / account[1] in order to use and deposit it to the bank;
-
+  // Transfer 100 DaiToken to the investor / account[1] in order to use and deposit it to the bank;
   await daiToken.transfer(accounts[1], "100000000000000000000");
-
 
 };
 
