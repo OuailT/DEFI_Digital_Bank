@@ -1,1 +1,162 @@
-/* Styles go here */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+html,
+body,
+body div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  background-color: #161C27;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  color: #fff;
+  
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.App {
+  max-width: 1440px;
+  width: 100%;
+  margin: auto;
+}
+
+
+.card-body {
+  background-color: #161C27;
+  border:none;
+}
+
+.card {
+  border: 20px solid #242C3D;
+  border-radius: 15px;
+}
+
+
+tr th {
+  color: #92AEE3;
+    letter-spacing: 1.5px;
+    font-size: 15px;
+}
+
+tr td {
+  color: #566786;
+}
+
+form {
+  font-family: inherit;
+}
+
+.balance-section {
+  padding-bottom: 40px;
+}
+
+.float-left {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+#balance-title {
+  color: #92AEE3;
+  letter-spacing: 1.5px;
+  font-size: 15px;
+}
+
+.btn {
+  background-color: #142037;
+  color: #fff;
+}
+
+.form-control,
+.input-group-text  {
+  background-color: #161C27;
+  border: 1px solid #92B6FF;
+  border-radius: 1px;
+}
+
+.input-group-text {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+
+
+
+

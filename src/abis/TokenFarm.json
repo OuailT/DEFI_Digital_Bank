@@ -820,7 +820,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 837,
+                            "referencedDeclaration": 841,
                             "src": "1041:4:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_TokenFarm_$804",
@@ -974,7 +974,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 837,
+                            "referencedDeclaration": 841,
                             "src": "1179:4:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_TokenFarm_$804",
@@ -3447,7 +3447,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 837,
+                            "referencedDeclaration": 841,
                             "src": "1041:4:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_TokenFarm_$804",
@@ -3601,7 +3601,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 837,
+                            "referencedDeclaration": 841,
                             "src": "1179:4:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_TokenFarm_$804",
@@ -5465,12 +5465,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x0F631Ef92d1D9FDE4A3055B2193A3B8377edB8a2",
-      "transactionHash": "0x98c05ef667152f7267a56cc35ff3e10b65af7bafcd2beda0b1720496d01a61f4"
+      "address": "0x6F69769291f2b16472174aC728d71dfab34076B8",
+      "transactionHash": "0x3a4039c51474a3db2b47c1d9bdb122d151aba1a12032163d97a5352aec4fe393"
     }
   },
   "schemaVersion": "3.2.3",
-  "updatedAt": "2022-01-05T10:21:42.190Z",
+  "updatedAt": "2022-01-07T21:01:22.244Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

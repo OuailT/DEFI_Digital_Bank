@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from 'react';
-import Navbar from './Navbar'
+import Navbar from "./Navbar/Navbar";
 import Web3 from 'web3';
 import TokenFarm from "../abis/TokenFarm.json";
 import EuroToken from "../abis/EuroToken.json";
 import DaiToken from "../abis/DaiToken.json";
 import './App.css'
+import Main from './Main';
 
 // [x] Create a Contract and Methods States
 // [x] Load web3
-// [] Load Blockchain contracts Data
+// [x] Load Blockchain contracts Data
+// [] create The navBar
 
 
 const App = () => {
@@ -32,12 +34,13 @@ const App = () => {
       getAccount();  
   },[])
 
+// I thing there is something wrong with the line 47 with the deployement of the contract;
+// I need to re-build this to new version
 
-
-const [investorAccount, setInvestorAccount] = useState("0xC700497841431Cf292b483b236Bc95eab4eE7819");
-const [eTokens, setETokens] = useState();
-const [dTokens, setDTokens] = useState();
-const [fTokens, setFTokens] = useState();
+const [investorAccount, setInvestorAccount] = useState("0x5Bf7D4ac09e761dC69045AcEF7E5c057C2E3e6e5");
+const [eTokens, setETokens] = useState({});
+const [dTokens, setDTokens] = useState({});
+const [fTokens, setFTokens] = useState({});
 const [eTokenBalance, setETokenBalance] = useState("0");
 const [dTokenBalance, setDTokenBalance] = useState("0");
 const [stackingBalance, setStackingBalance] = useState("0");
@@ -76,7 +79,6 @@ console.log(dTokens);
 
       // Create a instance of the contract
       const daiToken = new web3.eth.Contract(DaiToken.abi, daiTokenData.address);
-      console.log(daiToken._address);
       setDTokens(daiToken);
       console.log(dTokens);
 
@@ -118,6 +120,8 @@ console.log(dTokens);
       // Create an instance of the contract
       const tokenFarm = new web3.eth.Contract(TokenFarm.abi, farmTokenData.address);
       setFTokens(tokenFarm);
+      console.log(fTokens.options.address);
+      
 
       // get the balance 
       let stakingBalanceFarm = await tokenFarm.methods.stakingBalance(investorAccount).call();
@@ -136,12 +140,9 @@ console.log(dTokens);
 
 // ********************************StakeToken************************* //
 
-console.log(dTokens);
 
-const stackeTokens = async (amount) => {
-    await dTokens.methods.approve(fTokens._address, amount)
-    .send({ from : investorAccount})
-    .on("transitionsHash", (hash)=> {
+const stakeTokens = async (amount) => {
+    await dTokens.methods.approve("0xc3Bc662c013a3eAA14B90E56f4245E9560728403", amount).send({ from : investorAccount}).on("transitionsHash", (hash)=> {
       fTokens.methods.stakeTokens(amount).send({from : investorAccount})
     }).on("transitionsHash", (hash)=> {
       console.log("stacking has been validated")
@@ -149,8 +150,8 @@ const stackeTokens = async (amount) => {
 };
 
 
-
 // ******************************** unStake Token************************* //
+
 const unstakeTokens = async (amount) => {
   await fTokens.methods.unstakeTokens(amount)
   .send({from : investorAccount}).on("transitions Hash", (hash)=> {
@@ -158,23 +159,19 @@ const unstakeTokens = async (amount) => {
   });
 }
 
-
-
   return (
     <div>
-      <Navbar />
+      <Navbar/>
       <div className="container-fluid mt-5">
         <div className="row">
           <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '600px' }}>
             <div className="content mr-auto ml-auto">
-              <a
-                href="http://www.dappuniversity.com/bootcamp"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-              </a>
-              <h1>{investorAccount} {dTokenBalance} {eTokenBalance} {stackingBalance}</h1>
-
+              <Main
+              stackingBalance = {stackingBalance}
+              dTokenBalance = {dTokenBalance}
+              stakeTokens={stakeTokens}
+              eTokenBalance={eTokenBalance}
+              />
             </div>
           </main>
         </div>

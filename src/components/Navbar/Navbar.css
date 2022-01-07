@@ -1,0 +1,125 @@
+nav.nav-bar {
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 100px;
+    z-index: 1000;
+    border-bottom: 0.2px solid #6D6E71;
+    flex-direction: row;
+   
+    
+  }
+  
+  .logo {
+    max-width: 40px;
+    cursor: pointer;
+    filter: invert(1);
+  }
+
+  .btn {
+    padding: 11px 11px;
+    color: #000;
+    background: #fff;
+    border-radius: 34px;
+    transition: background .5s;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  
+  nav.nav-bar .navigation {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .navigation li {
+    margin-left: 2rem;
+  }
+  
+  .navigation li a {
+    color: #fff;
+    font-size: 0.80rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: color 0.5s;
+  }
+  
+  .navigation li a:hover {
+    color: chocolate;
+  }
+  
+  .toggle-menu {
+    display: none;
+  }
+  
+  /* @media (max-width: 992px) {
+  
+    .toggle-menu {
+      display: block;
+    }
+  
+    nav.nav-bar .navigation {
+      position: absolute;
+      display: flex;
+      justify-content: flex-start;
+      width: 45%;
+      background: rgba(0,0,0, 0.9);
+      color: #ffff;
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 60px;
+      top: -20px;
+      left: 0px;
+      height: 103vh;
+      transition: all 0.5s ease-in-out;
+      border-right: 2px solid #000;
+      transform : translateX(-1000px)
+  }
+  
+  nav.nav-bar .navigation.active {
+      transform: translateX(-20px);
+  }
+  
+  .navigation li {
+    margin: 10px 0px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+  }
+  
+  .toggle-menu {
+      position: relative;
+      background-image: url(../../images/icon-hamburger.svg);
+      height: 30px;
+      width: 40px;
+      background-size: 37px;
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+    }
+  
+    nav.nav-bar {
+      padding: 39px 22px;
+    }
+  
+  }
+  
+   @media (min-width: 481px) and (max-width: 767px) {
+    nav.nav-bar .navigation {
+      width: 70%;
+    }
+    
+  } 
+  
+  
+  @media (min-width: 320px) and (max-width: 480px) {
+    nav.nav-bar .navigation {
+      width: 80%;
+    }
+  } */
