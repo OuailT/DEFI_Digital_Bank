@@ -1,69 +1,74 @@
 import React, {useState, useEffect} from 'react';
 import Navbar from "./Navbar/Navbar";
-import Web3 from 'web3';
+// import Web3 from 'web3';
+import web3 from '../web3';
 import TokenFarm from "../abis/TokenFarm.json";
 import EuroToken from "../abis/EuroToken.json";
 import DaiToken from "../abis/DaiToken.json";
 import './App.css'
 import Main from './Main';
 
-// [x] Create a Contract and Methods States
-// [x] Load web3
-// [x] Load Blockchain contracts Data
-// [] create The navBar
 
 
 const App = () => {
 
+  web3.eth.getAccounts().then(console.log);
+
   useEffect(()=> {
     const LoadData = async () => {
-      await ethEnabled();
+      // await ethEnabled();
       await blockchainDataLoad();
+      
       }
       LoadData();
    
   },[])
   
-  useEffect(()=> {    
-      const getAccount = async () => {
-        const accounts = await window.ethereum.send('eth_requestAccounts');
-        let metaAccount = accounts.result;
-        setInvestorAccount(metaAccount);
+  // useEffect(()=> {    
+  //     const getAccount = async () => {
+  //       const accounts = await window.ethereum.send('eth_requestAccounts');
+  //       let metaAccount = accounts.result;
+  //       setInvestorAccount(metaAccount);
         
-      }
-      getAccount();  
-  },[])
+  //     }
+  //     getAccount();  
+  // },[])
 
-// I thing there is something wrong with the line 47 with the deployement of the contract;
-// I need to re-build this to new version
 
-const [investorAccount, setInvestorAccount] = useState("0x5Bf7D4ac09e761dC69045AcEF7E5c057C2E3e6e5");
+const [investorAccount, setInvestorAccount] = useState("0x263bE8ab7c38DDdFb51E879f87F13D336CEDfB2B");
 const [eTokens, setETokens] = useState({});
 const [dTokens, setDTokens] = useState({});
 const [fTokens, setFTokens] = useState({});
 const [eTokenBalance, setETokenBalance] = useState("0");
 const [dTokenBalance, setDTokenBalance] = useState("0");
 const [stackingBalance, setStackingBalance] = useState("0");
+const [FarmAddress, setFarmAddress] = useState("");
 
-console.log(dTokens);
+
+console.log()
+
   // ******************************** Load Web3 ************************* //
-  const ethEnabled = async () => {
+  // const ethEnabled = async () => {
 
-    if (window.ethereum) {
-      await window.ethereum.send('eth_requestAccounts');
-      window.web3 = new Web3(window.ethereum);
-      return true;
-    }
-    return false;
-  }
+  //   if (window.ethereum) {
+  //     await window.ethereum.send('eth_requestAccounts');
+  //     window.web3 = new Web3(window.ethereum);
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
  // ******************************** Load Blockchain Contracts Data ************************* //
 
   const blockchainDataLoad = async () => {
-    
-    const web3 = window.web3;
+      
+    // const web3 = window.web3;
 
     try {
+
+      const accounts = await web3.eth.getAccounts();
+      
+
     // get the Network Id of The contracts
     // const networkId = await web3.eth.net.getId();(not working);
     const networkId = await window.ethereum.request({
@@ -79,8 +84,10 @@ console.log(dTokens);
 
       // Create a instance of the contract
       const daiToken = new web3.eth.Contract(DaiToken.abi, daiTokenData.address);
+      const daiTokenAddress =  daiToken.options.address;
+      console.log(daiTokenAddress);
       setDTokens(daiToken);
-      console.log(dTokens);
+      
 
       // get the balance of the investor account
       let daiTokenBalance = await daiToken.methods.balanceOf(investorAccount).call();
@@ -100,6 +107,7 @@ console.log(dTokens);
       
       //Create an instance of the contract
       const euroToken = new web3.eth.Contract(EuroToken.abi, euroTokenData.address);
+      
       setETokens(euroToken);
       // get the balance
 
@@ -119,8 +127,9 @@ console.log(dTokens);
       
       // Create an instance of the contract
       const tokenFarm = new web3.eth.Contract(TokenFarm.abi, farmTokenData.address);
+      const farmTokensBalance = tokenFarm.options.address;
+      setFarmAddress(farmTokensBalance);
       setFTokens(tokenFarm);
-      console.log(fTokens.options.address);
       
 
       // get the balance 
@@ -140,14 +149,22 @@ console.log(dTokens);
 
 // ********************************StakeToken************************* //
 
-
-const stakeTokens = async (amount) => {
-    await dTokens.methods.approve("0xc3Bc662c013a3eAA14B90E56f4245E9560728403", amount).send({ from : investorAccount}).on("transitionsHash", (hash)=> {
-      fTokens.methods.stakeTokens(amount).send({from : investorAccount})
-    }).on("transitionsHash", (hash)=> {
-      console.log("stacking has been validated")
+const stakeTokens = (amount) => {
+  dTokens.methods
+    .approve(fTokens._address, amount)
+    .send({ from: investorAccount })
+    .on('transitionsHash', hash => {
+      fTokens.methods
+        .stakeTokens(amount)
+        .send({ from: investorAccount })
+        .on('transitionsHash', hash => {
+          console.log('stacking has been validated');
+        })
+        
     });
-};
+}
+
+
 
 
 // ******************************** unStake Token************************* //

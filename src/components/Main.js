@@ -4,23 +4,22 @@ import web3 from "../web3";
 
 
 
+
 const Main = ({dTokenBalance, stackingBalance, stakeTokens, eTokenBalance}) => {
 
     // const [inputValue, setInputValue] = useState("");
     
     const refInput = useRef();
     
-    console.log(dTokenBalance);
-    
-
     // ********************* submit function ************************* //
     const stackHandler =  (e) => {
-        e.preventDefault();
-
-        const amount = refInput.current.value;
-        const newAmount = amount.toString();
-        const myAmount = web3.utils.toWei(newAmount, "ether");
-        stakeTokens(myAmount);
+          e.preventDefault();
+          
+          let amount;
+              amount = refInput.current.value;
+              amount = amount.toString();
+              amount = web3.utils.toWei(amount, "ether");
+        stakeTokens(amount);
         
     }
 
@@ -74,7 +73,7 @@ const Main = ({dTokenBalance, stackingBalance, stakeTokens, eTokenBalance}) => {
                   </div>
 
                 </div>
-                <button type="submit" className="btn btn-primary btn-block btn-lg">STAKE!</button>
+                <button type="click" className="btn btn-primary btn-block btn-lg">STAKE!</button>
               </form>
 
               <button type="submit" className="btn btn-primary btn-block btn-lg">UnStack</button>
