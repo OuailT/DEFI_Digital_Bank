@@ -73,7 +73,7 @@ const Main = ({dTokenBalance, stackingBalance, stakeTokens, eTokenBalance}) => {
                   </div>
 
                 </div>
-                <button type="click" className="btn btn-primary btn-block btn-lg">STAKE!</button>
+                <button type="submit" className="btn btn-primary btn-block btn-lg">STAKE!</button>
               </form>
 
               <button type="submit" className="btn btn-primary btn-block btn-lg">UnStack</button>

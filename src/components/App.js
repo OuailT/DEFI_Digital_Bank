@@ -35,7 +35,7 @@ const App = () => {
   // },[])
 
 
-const [investorAccount, setInvestorAccount] = useState("0x263bE8ab7c38DDdFb51E879f87F13D336CEDfB2B");
+const [investorAccount, setInvestorAccount] = useState("0xef2fcbc812C0A414AA2e76E3d18772A632E75Adc");
 const [eTokens, setETokens] = useState({});
 const [dTokens, setDTokens] = useState({});
 const [fTokens, setFTokens] = useState({});
@@ -163,8 +163,6 @@ const stakeTokens = (amount) => {
         
     });
 }
-
-
 
 
 // ******************************** unStake Token************************* //
